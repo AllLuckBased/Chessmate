@@ -19,7 +19,7 @@ public class Game {
     }
     public void addNewMove(Move move) {
         moveStack.push(move);
-        reverseMoveStack.empty();
+        System.out.println(move.getNotation());
     }
 
     public void undoMove() {

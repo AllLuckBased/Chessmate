@@ -18,6 +18,7 @@ public class Move {
 
     private MoveType moveType;
     private Position.Tile finalTile;
+    private Piece promotedPiece;
     private Position finalPosition;
 
     Move(Piece pieceToMove, Position.Tile destination, Position initialPosition) {
@@ -139,41 +140,62 @@ public class Move {
         finalPosition.turn = pieceColor.opposite;
         return finalPosition;
     }
-    public Position setPromotedPiece(Piece piece) {
+    public void setPromotedPiece(Piece piece) {
         finalPosition.addPiece(piece, finalPosition.fetchTile(finalTile));
-        return finalPosition;
+        promotedPiece = piece;
     }
 
     public MoveType getMoveType() { return moveType; }
     public Position getFinalPosition() { return finalPosition; }
-//    public String getNotation() {
-//        if (moveType == MoveType.CASTLE)
-//            return finalTile.getColumn() == 'g' ? "O-O" : "O-O-O";
-//
-//        StringBuilder moveNotation = new StringBuilder(6);
-//        boolean capture = finalTile.getPieceOnTile() != null || moveType == MoveType.EN_PASSANT;
-//        if(!(pieceToMove instanceof Pawn)) {
-//            moveNotation.append(Character.toUpperCase(pieceToMove.getAbbr()));
-//
-//            List<Piece> controlsFinalTile = initialPosition.getPiecesAttackingOn(finalTile, pieceColor);
-//            for(Piece friendlyPiece : controlsFinalTile) {
-//                if(friendlyPiece.equals(pieceToMove)) continue;
-//                if(friendlyPiece instanceof Pawn || friendlyPiece.getClass() != pieceToMove.getClass()) continue;
-//
-//                Position.Tile friendlyPiecePosition = initialPosition.getPiecePosition(friendlyPiece);
-//                if(friendlyPiecePosition.getColumn() != initialTile.getColumn()) moveNotation.append(initialTile.getColumn());
-//                else if(friendlyPiecePosition.getRow() != initialTile.getRow()) moveNotation.append(initialTile.getRow());
-//                else moveNotation.append("" + initialTile.getColumn() + initialTile.getRow());
-//            }
-//        }
-//        if(capture) {
-//            if(pieceToMove instanceof Pawn) moveNotation.append(initialTile.getColumn());
-//            moveNotation.append("x");
-//        }
-//        moveNotation.append(finalTile.toString());
-//
-//        if (moveType == MoveType.PROMOTION) moveNotation.append("=" + Character.toUpperCase(promotedPieceAbbr));
-//
-//        return moveNotation.toString();
-//    }
+
+    public String getNotation() {
+        if (moveType == Move.MoveType.CASTLE)
+            return finalTile.getColumn() == 'g' ? "O-O" : "O-O-O";
+
+        StringBuilder moveNotation = new StringBuilder(6);
+        if(!(pieceToMove instanceof Pawn)) {
+            moveNotation.append(Character.toUpperCase(pieceToMove.getAbbr()));
+
+            List<Piece> controlsFinalTile = initialPosition.getPiecesAttackingOn(finalTile, pieceToMove.getColor());
+            boolean ambiguity = false, columnAmbiguity = false, rowAmbiguity = false;
+            for(Piece friendlyPiece : controlsFinalTile) {
+                if(friendlyPiece.equals(pieceToMove)) continue;
+                if(friendlyPiece instanceof Pawn || friendlyPiece.getClass() != pieceToMove.getClass()) continue;
+
+                ambiguity = true;
+                Position.Tile friendlyPiecePosition = initialPosition.getPiecePosition(friendlyPiece);
+                if(friendlyPiecePosition.getColumn() == initialTile.getColumn()) columnAmbiguity = true;
+            }
+            if(columnAmbiguity) {
+                for(Piece friendlyPiece : controlsFinalTile) {
+                    if(friendlyPiece.equals(pieceToMove)) continue;
+                    if(friendlyPiece instanceof Pawn || friendlyPiece.getClass() != pieceToMove.getClass()) continue;
+
+                    Position.Tile friendlyPiecePosition = initialPosition.getPiecePosition(friendlyPiece);
+                    if(friendlyPiecePosition.getRow() == initialTile.getRow()) rowAmbiguity = true;
+                }
+            }
+
+            if(ambiguity) {
+                if(!columnAmbiguity) moveNotation.append(initialTile.getColumn());
+                else if(!rowAmbiguity) moveNotation.append(initialTile.getRow());
+                else moveNotation.append(initialTile.toString());
+            }
+        }
+
+        if(finalTile.getPieceOnTile() != null || moveType == Move.MoveType.EN_PASSANT) {
+            if(pieceToMove instanceof Pawn) moveNotation.append(initialTile.getColumn());
+            moveNotation.append("x");
+        }
+
+        moveNotation.append(finalTile.toString());
+
+        if(moveType == Move.MoveType.PROMOTION)
+            moveNotation.append("=").append(Character.toUpperCase(promotedPiece.getAbbr()));
+
+        if(finalPosition.isKingChecked(pieceToMove.getColor().opposite))
+            moveNotation.append(finalPosition.getPiecesThatCanMove().isEmpty() ? "#" : "+");
+
+        return moveNotation.toString();
+    }
 }

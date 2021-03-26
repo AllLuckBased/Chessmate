@@ -2,6 +2,7 @@ package components;
 
 import data.Game;
 import data.Move;
+import data.Position;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -156,9 +157,11 @@ public class Board extends StackPane {
                     Board.this.getChildren().remove(PromotionOptions.this);
                     Board.this.getChildren().remove(promotionVeil);
 
-                    currentGame.addNewMove(moveToMake);
                     Tile clickedTile = (Tile) mouseEvent.getSource();
-                    update(moveToMake.setPromotedPiece(clickedTile.model.getPieceOnTile()));
+                    moveToMake.setPromotedPiece(clickedTile.model.getPieceOnTile());
+
+                    currentGame.addNewMove(moveToMake);
+                    update(moveToMake.getFinalPosition());
                 });
                 add(option, 0, rowIndex++);
             }
@@ -171,7 +174,7 @@ public class Board extends StackPane {
     }
 
     private final ImageView background;
-    private final Position position = new Position(new data.Position());
+    private Position position = new Position(new data.Position());
 
     private Game currentGame;
 
@@ -269,12 +272,18 @@ public class Board extends StackPane {
     }
 
     public void startGame() {
-        currentGame = new Game(position.model);
-        position.model.arrange();
-        refresh();
+        if(currentGame != null) {
+            moveToMake = null; selectedTile = null;
+            getChildren().remove(0, getChildren().size());
+            position = new Position(new data.Position());
+            getChildren().addAll(background, position);
+        }
 
-        setFocusTraversable(true);
+        currentGame = new Game(position.model);
+        position.model.arrange(); refresh();
+
         position.activate();
+        setFocusTraversable(true);
         addEventHandler(KeyEvent.KEY_PRESSED, arrowKeyPress);
     }
 }
