@@ -112,8 +112,8 @@ public class Board extends StackPane {
                 for(int column=0; column<8; column++)
                     add(new Board.Tile(tileIterator.next()), column, 8-row);
 
-            prefWidthProperty().bind(widthProperty());
-            prefHeightProperty().bind(heightProperty());
+            prefWidthProperty().bind(Board.this.widthProperty());
+            prefHeightProperty().bind(Board.this.heightProperty());
 
             getStyleClass().add("position");
         }
@@ -176,7 +176,7 @@ public class Board extends StackPane {
     private final ImageView background;
     private Position position = new Position(new data.Position());
 
-    private Game currentGame;
+    private MoveHistory moveHistory; private Game currentGame;
 
     private Tile selectedTile; Move moveToMake;
     private final EventHandler<MouseEvent> moveHandler = mouseEvent -> {
@@ -214,6 +214,7 @@ public class Board extends StackPane {
                 getChildren().add(new PromotionOptions(clickedTile));
             else {
                 currentGame.addNewMove(moveToMake);
+                moveHistory.addMove(moveToMake);
                 update(moveToMake.getFinalPosition());
                 if(position.model.getPiecesThatCanMove().isEmpty()) position.deactivate();
             }
@@ -237,21 +238,15 @@ public class Board extends StackPane {
         background.fitWidthProperty().bindBidirectional(position.prefWidthProperty());
         background.fitHeightProperty().bindBidirectional(position.prefHeightProperty());
 
-        setMinSize(320, 320);
-
+        setMinSize(240, 240);
         getChildren().addAll(background, position);
-
         getStyleClass().add("board");
     }
     @Override
-    protected void setHeight(double v) {
-        super.setHeight(v);
-        super.setWidth(v);
-    }
-    @Override
-    protected void setWidth(double v) {
-        super.setWidth(v);
-        super.setHeight(v);
+    public void resize(double width, double height) {
+        //System.out.println("Resize method was called with params(W,H): " + width + ", " + height);
+        double size = Math.min(width, height);
+        super.resize(size, size);
     }
 
     public Tile fetchTile(data.Position.Tile tileModel) {
@@ -271,7 +266,7 @@ public class Board extends StackPane {
         moveToMake = null;
     }
 
-    public void startGame() {
+    public void startGame(MoveHistory moveHistory) {
         if(currentGame != null) {
             moveToMake = null; selectedTile = null;
             getChildren().remove(0, getChildren().size());
@@ -281,6 +276,8 @@ public class Board extends StackPane {
 
         currentGame = new Game(position.model);
         position.model.arrange(); refresh();
+
+        this.moveHistory = moveHistory;
 
         position.activate();
         setFocusTraversable(true);

@@ -1,0 +1,8 @@
+Custom app theme for each board theme
+	MoveHistory design tweaks
+	Border on board
+Stage size adjustments
+
+Drag & Drop pieces
+
+Move History moves link to game positions

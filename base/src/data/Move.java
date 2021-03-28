@@ -21,11 +21,16 @@ public class Move {
     private Piece promotedPiece;
     private Position finalPosition;
 
+    private int moveNumber;
+
     Move(Piece pieceToMove, Position.Tile destination, Position initialPosition) {
         this(pieceToMove, initialPosition);
         setFinalTile(destination);
     }
     public Move(Piece pieceToMove, Position initialPosition) {
+        if(pieceToMove == null || initialPosition == null)
+            throw new RuntimeException("Cannot instantiate move object without a piece & position");
+
         this.pieceToMove = pieceToMove;
         this.initialPosition = initialPosition;
 
@@ -148,11 +153,24 @@ public class Move {
     public MoveType getMoveType() { return moveType; }
     public Position getFinalPosition() { return finalPosition; }
 
-    public String getNotation() {
-        if (moveType == Move.MoveType.CASTLE)
-            return finalTile.getColumn() == 'g' ? "O-O" : "O-O-O";
+    int getMoveNumber() { return moveNumber; }
+    void setMoveNumber(int moveNumber) { this.moveNumber = moveNumber; }
 
-        StringBuilder moveNotation = new StringBuilder(6);
+    private boolean notationGenerationPossible() {
+        if(moveType == null || moveType == MoveType.INVALID) return false;
+        if(moveType == MoveType.PROMOTION && promotedPiece == null) return false;
+        return moveNumber != 0;
+    }
+    public String getNotation() {
+        if(!notationGenerationPossible())
+            throw new RuntimeException("Cannot generate notation as complete info absent!");
+
+        StringBuilder moveNotation = new StringBuilder(9);
+        if(pieceColor == Piece.PieceColor.WHITE) moveNotation.append("" + moveNumber + ".");
+
+        if (moveType == Move.MoveType.CASTLE)
+            return finalTile.getColumn() == 'g' ? moveNotation.append("O-O").toString() : moveNotation.append("O-O-O").toString();
+
         if(!(pieceToMove instanceof Pawn)) {
             moveNotation.append(Character.toUpperCase(pieceToMove.getAbbr()));
 

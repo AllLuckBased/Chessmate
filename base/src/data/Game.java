@@ -1,5 +1,7 @@
 package data;
 
+import piecetypes.Piece;
+
 import java.util.Stack;
 
 public class Game {
@@ -17,9 +19,15 @@ public class Game {
         if(moveStack.empty()) return startingPosition;
         return moveStack.peek().getFinalPosition();
     }
+
+    private int getCurrentMoveNumber() {
+        if(moveStack.empty()) return startingPosition.fullmoveNumber;
+        else return getCurrentPosition().turn == Piece.PieceColor.WHITE ?
+                moveStack.peek().getMoveNumber() + 1 : moveStack.peek().getMoveNumber();
+    }
     public void addNewMove(Move move) {
+        move.setMoveNumber(getCurrentMoveNumber());
         moveStack.push(move);
-        System.out.println(move.getNotation());
     }
 
     public void undoMove() {
