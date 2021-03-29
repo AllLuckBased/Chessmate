@@ -2,6 +2,7 @@ package app;
 
 import components.Board;
 import components.MoveHistory;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -34,13 +35,16 @@ public class Display extends BorderPane {
         HBox.setHgrow(board, Priority.ALWAYS);
 
         HBox center = new HBox();
+        center.setSpacing(20);
         center.setAlignment(Pos.CENTER);
+        center.setPadding(new Insets(20));
 
         MoveHistory moveHistory = new MoveHistory(board);
         center.getChildren().addAll(board, moveHistory);
 
         setCenter(center);
         getStylesheets().add("/css/analysis-board.css");
+
 
         board.startGame(moveHistory);
     }

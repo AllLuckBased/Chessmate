@@ -1,8 +1,6 @@
 package components;
 
-import data.Game;
 import data.Move;
-import data.Position;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -160,7 +158,7 @@ public class Board extends StackPane {
                     Tile clickedTile = (Tile) mouseEvent.getSource();
                     moveToMake.setPromotedPiece(clickedTile.model.getPieceOnTile());
 
-                    currentGame.addNewMove(moveToMake);
+                    moveHistory.addMove(moveToMake);
                     update(moveToMake.getFinalPosition());
                 });
                 add(option, 0, rowIndex++);
@@ -173,10 +171,10 @@ public class Board extends StackPane {
         }
     }
 
+    private Position position;
     private final ImageView background;
-    private Position position = new Position(new data.Position());
 
-    private MoveHistory moveHistory; private Game currentGame;
+    private MoveHistory moveHistory;
 
     private Tile selectedTile; Move moveToMake;
     private final EventHandler<MouseEvent> moveHandler = mouseEvent -> {
@@ -185,7 +183,7 @@ public class Board extends StackPane {
 
         Move temp;
         Piece pieceToMove = clickedTileModel.getPieceOnTile();
-        data.Position currentPosition = currentGame.getCurrentPosition();
+        data.Position currentPosition = moveHistory.getCurrentGame().getCurrentPosition();
 
         if(moveToMake == null) {
             if(pieceToMove != null) {
@@ -213,7 +211,6 @@ public class Board extends StackPane {
             if(moveToMake.getMoveType() == Move.MoveType.PROMOTION)
                 getChildren().add(new PromotionOptions(clickedTile));
             else {
-                currentGame.addNewMove(moveToMake);
                 moveHistory.addMove(moveToMake);
                 update(moveToMake.getFinalPosition());
                 if(position.model.getPiecesThatCanMove().isEmpty()) position.deactivate();
@@ -222,23 +219,24 @@ public class Board extends StackPane {
     };
     private final EventHandler<KeyEvent> arrowKeyPress = keyEvent -> {
         switch (keyEvent.getCode()) {
-            case LEFT: currentGame.undoMove(); break;
-            case RIGHT: currentGame.redoMove(); break;
-            case UP: currentGame.undoAll(); break;
-            case DOWN: currentGame.redoAll(); break;
+            case LEFT: moveHistory.undoMove(); break;
+            case RIGHT: moveHistory.redoMove(); break;
+            case UP: moveHistory.undoAll(); break;
+            case DOWN: moveHistory.redoAll(); break;
             default:
         }
-        update(currentGame.getCurrentPosition());
+        update(moveHistory.getCurrentGame().getCurrentPosition());
     };
 
 
     public Board() {
+        position = new Position(new data.Position());
+
         background = new ImageView( new Image("boardthemes/" + Preferences.userRoot().get("Board Theme", "Green") + ".png",
                         560, 560, true, true));
         background.fitWidthProperty().bindBidirectional(position.prefWidthProperty());
         background.fitHeightProperty().bindBidirectional(position.prefHeightProperty());
 
-        setMinSize(240, 240);
         getChildren().addAll(background, position);
         getStyleClass().add("board");
     }
@@ -254,6 +252,9 @@ public class Board extends StackPane {
             if(tile.model == tileModel) return tile;
         throw new RuntimeException("Could not find your god damn tile.");
     }
+    data.Position getCurrentPosition() {
+        return position.model;
+    }
 
     public void refresh() {
         pieceset = new Image[2][6];
@@ -267,20 +268,19 @@ public class Board extends StackPane {
     }
 
     public void startGame(MoveHistory moveHistory) {
-        if(currentGame != null) {
+        if(moveHistory != null) {
             moveToMake = null; selectedTile = null;
             getChildren().remove(0, getChildren().size());
             position = new Position(new data.Position());
             getChildren().addAll(background, position);
         }
 
-        currentGame = new Game(position.model);
-        position.model.arrange(); refresh();
+        position.model.arrange();
+
+        moveHistory.initialize();
+        refresh(); position.activate();
 
         this.moveHistory = moveHistory;
-
-        position.activate();
-        setFocusTraversable(true);
         addEventHandler(KeyEvent.KEY_PRESSED, arrowKeyPress);
     }
 }

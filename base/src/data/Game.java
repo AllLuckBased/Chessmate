@@ -30,24 +30,27 @@ public class Game {
         moveStack.push(move);
     }
 
-    public void undoMove() {
-        if(moveStack.isEmpty()) return;
-        Move lastMove = moveStack.pop();
-        reverseMoveStack.push(lastMove);
+    public Move undoMove() {
+        if(moveStack.isEmpty()) return null;
+        reverseMoveStack.push(moveStack.pop());
+        return moveStack.peek();
     }
     public void undoAll() {
         while(!moveStack.isEmpty()) {
             reverseMoveStack.push(moveStack.pop());
         }
     }
-    public void redoMove() {
-        if(reverseMoveStack.isEmpty()) return;
+
+    public Move redoMove() {
+        if(reverseMoveStack.isEmpty()) return null;
         Move nextMove = reverseMoveStack.pop();
         moveStack.push(nextMove);
+        return nextMove;
     }
-    public void redoAll() {
+    public Move redoAll() {
         while(!reverseMoveStack.isEmpty()) {
             moveStack.push(reverseMoveStack.pop());
         }
+        return moveStack.peek();
     }
 }
