@@ -5,7 +5,6 @@ import piecetypes.Pawn;
 import piecetypes.Piece;
 import piecetypes.Rook;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Move {
@@ -142,7 +141,11 @@ public class Move {
             else if (initialTile.equals(initialPosition.fetchTile('a', 8))) finalPosition.castlePerms[3] = false;
         }
 
-        finalPosition.turn = pieceColor.opposite;
+        finalPosition.turn = pieceColor.opposite; finalPosition.halfmoveClock++;
+        if(this.finalTile.getPieceOnTile() != null || pieceToMove instanceof Pawn)
+            finalPosition.halfmoveClock = 0;
+
+        if(pieceColor == Piece.PieceColor.BLACK) finalPosition.fullmoveNumber++;
         return finalPosition;
     }
     public void setPromotedPiece(Piece piece) {

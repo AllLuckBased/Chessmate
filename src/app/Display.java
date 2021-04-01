@@ -4,16 +4,12 @@ import components.Board;
 import components.MoveHistory;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
 
 public class Display extends BorderPane {
     Board board;
-
     public Display() {
         Toolbar toolbar = new Toolbar(this);
         toolbar.prefWidthProperty().bind(widthProperty());
@@ -32,20 +28,17 @@ public class Display extends BorderPane {
     }
 
     void showAnalysisBoard() {
-        HBox.setHgrow(board, Priority.ALWAYS);
+        MoveHistory moveHistory = new MoveHistory(board);
 
         HBox center = new HBox();
         center.setSpacing(20);
         center.setAlignment(Pos.CENTER);
+        HBox.setHgrow(board, Priority.ALWAYS);
         center.setPadding(new Insets(20));
-
-        MoveHistory moveHistory = new MoveHistory(board);
         center.getChildren().addAll(board, moveHistory);
-
         setCenter(center);
-        getStylesheets().add("/css/analysis-board.css");
-
 
         board.startGame(moveHistory);
+        getStylesheets().add("/css/analysis-board.css");
     }
 }

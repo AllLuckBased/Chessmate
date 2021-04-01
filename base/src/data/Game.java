@@ -1,7 +1,5 @@
 package data;
 
-import piecetypes.Piece;
-
 import java.util.Stack;
 
 public class Game {
@@ -20,20 +18,15 @@ public class Game {
         return moveStack.peek().getFinalPosition();
     }
 
-    private int getCurrentMoveNumber() {
-        if(moveStack.empty()) return startingPosition.fullmoveNumber;
-        else return getCurrentPosition().turn == Piece.PieceColor.WHITE ?
-                moveStack.peek().getMoveNumber() + 1 : moveStack.peek().getMoveNumber();
-    }
     public void addNewMove(Move move) {
-        move.setMoveNumber(getCurrentMoveNumber());
+        move.setMoveNumber(getCurrentPosition().fullmoveNumber);
         moveStack.push(move);
     }
 
     public Move undoMove() {
         if(moveStack.isEmpty()) return null;
         reverseMoveStack.push(moveStack.pop());
-        return moveStack.peek();
+        return !moveStack.isEmpty()? moveStack.peek() : null;
     }
     public void undoAll() {
         while(!moveStack.isEmpty()) {
@@ -43,14 +36,21 @@ public class Game {
 
     public Move redoMove() {
         if(reverseMoveStack.isEmpty()) return null;
-        Move nextMove = reverseMoveStack.pop();
-        moveStack.push(nextMove);
-        return nextMove;
+        moveStack.push(reverseMoveStack.pop());
+        return !moveStack.isEmpty()? moveStack.peek() : null;
     }
     public Move redoAll() {
         while(!reverseMoveStack.isEmpty()) {
             moveStack.push(reverseMoveStack.pop());
         }
-        return moveStack.peek();
+        return !moveStack.isEmpty()? moveStack.peek() : null;
+    }
+
+    public void jumpToMove(Move move) {
+        if(move.getMoveNumber() < getCurrentPosition().fullmoveNumber)
+            while((!moveStack.isEmpty()? moveStack.peek() : null) != move)
+                reverseMoveStack.push(moveStack.pop());
+        else while((!moveStack.isEmpty()? moveStack.peek() : null) != move)
+            moveStack.push(reverseMoveStack.pop());
     }
 }

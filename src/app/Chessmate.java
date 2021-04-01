@@ -1,6 +1,7 @@
 package app;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
@@ -14,11 +15,13 @@ public class Chessmate extends Application {
     @Override
     public void start(Stage stage) {
         Display display = new Display();
-        display.showHomeScreen();
 
         stage.setTitle("Chessmate");
         stage.setScene(new Scene(display));
+        stage.setMinHeight(350); stage.setMinWidth(450);
+
         stage.show();
+        display.showHomeScreen();
 
         // For debugging GUI only...
         boolean debug = true;

@@ -2,8 +2,6 @@ package components;
 
 import data.Game;
 import data.Move;
-import data.Position;
-import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
@@ -18,14 +16,16 @@ public class MoveHistory extends FlowPane {
             this.move = move;
 
             setText(move.getNotation());
-            addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-                MoveLabel clickedLabel = (MoveLabel) mouseEvent.getSource();
-
-                clickedLabel.select();
-                board.update(clickedLabel.move.getFinalPosition());
-            });
-
             getStyleClass().add("move-label");
+            addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+                if(board.listenForEvents) {
+                    MoveLabel clickedLabel = (MoveLabel) mouseEvent.getSource();
+
+                    clickedLabel.select();
+                    currentGame.jumpToMove(clickedLabel.move);
+                    board.jumpToPosition(clickedLabel.move.getFinalPosition());
+                }
+            });
         }
 
         private void select() {
@@ -47,15 +47,15 @@ public class MoveHistory extends FlowPane {
         maxHeightProperty().bind(board.heightProperty());
         prefWidthProperty().bind(heightProperty().multiply(2).divide(3));
 
-        setPadding(new Insets(20));
         getStyleClass().add("move-history");
+        getStylesheets().add("/css/move-history.css");
     }
 
     Game getCurrentGame() {
         return currentGame;
     }
 
-    public void initialize() {
+    public void linkToBoard() {
         currentGame = new Game(board.getCurrentPosition());
     }
 
@@ -66,6 +66,7 @@ public class MoveHistory extends FlowPane {
 
         throw new RuntimeException("Could not find your god damn move label!");
     }
+
     public void addMove(Move move) {
         currentGame.addNewMove(move);
         MoveLabel moveLabel = new MoveLabel(move);
@@ -77,11 +78,17 @@ public class MoveHistory extends FlowPane {
     public void undoMove() {
         Move lastMove = currentGame.undoMove();
         if(lastMove != null) fetchLabel(lastMove).select();
-        else { selectedLabel.getStyleClass().remove("selected-move-label"); selectedLabel = null; }
+        else if(selectedLabel != null) {
+            selectedLabel.getStyleClass().remove("selected-move-label");
+            selectedLabel = null;
+        }
     }
     public void undoAll() {
         currentGame.undoAll();
-        selectedLabel.getStyleClass().remove("selected-move-label"); selectedLabel = null;
+        if(selectedLabel != null) {
+            selectedLabel.getStyleClass().remove("selected-move-label");
+            selectedLabel = null;
+        }
     }
 
     public void redoMove() {
@@ -90,6 +97,6 @@ public class MoveHistory extends FlowPane {
     }
     public void redoAll() {
         Move latestMove = currentGame.redoAll();
-        fetchLabel(latestMove).select();
+        if(latestMove != null) fetchLabel(latestMove).select();
     }
 }
