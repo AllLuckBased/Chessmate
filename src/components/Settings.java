@@ -84,7 +84,7 @@ public class Settings extends Stage {
             Preferences preferences = Preferences.userRoot();
             preferences.put("Piece Theme", availablePieceThemes.getValue());
             preferences.put("Board Theme", availableBoardThemes.getValue());
-            mainDisplay.getBoard().refresh();
+            mainDisplay.getBoard().reload();
         });
         cancelButton.setOnAction(actionEvent -> close());
         okButton.setOnAction(actionEvent -> {

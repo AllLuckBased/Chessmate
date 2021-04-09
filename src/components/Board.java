@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -20,6 +21,38 @@ import java.util.prefs.Preferences;
 public class Board extends StackPane {
     // cached images...
     private static Image[][] pieceset = new Image[2][6];
+
+    private final class DragData {
+        private final Tile dragSource;
+        private final double initialTranslateX, initialTranslateY, initialMouseX, initialMouseY;
+
+        private final ImageView draggedPieceView;
+
+        public DragData(Tile dragSource, MouseEvent dragEvent) {
+            if(permSelectedTile != null)
+                permSelectedTile.deselect();
+
+            dragSource.select();
+            this.dragSource = dragSource;
+
+            initialTranslateX = dragSource.getLayoutX() - getWidth()/2 + dragSource.getWidth()/2;
+            initialTranslateY = dragSource.getLayoutY() - getHeight()/2 + dragSource.getHeight()/2;
+            initialMouseX = dragEvent.getScreenX(); initialMouseY = dragEvent.getScreenY();
+
+            draggedPieceView = new ImageView(dragSource.pieceView.getImage());
+            draggedPieceView.setFitHeight(dragSource.pieceView.getFitHeight());
+            draggedPieceView.setFitWidth(dragSource.pieceView.getFitWidth());
+            draggedPieceView.setTranslateX(initialTranslateX);
+            draggedPieceView.setTranslateY(initialTranslateY);
+
+            Board.this.getChildren().add(draggedPieceView);
+            dragSource.pieceView.setImage(null);
+        }
+    }
+
+    boolean listenForEvents = true;
+    private DragData dragData = null;
+    private Tile tempSelectedTile, permSelectedTile; Move moveToMake;
 
     private class Tile extends StackPane {
         private data.Position.Tile model;
@@ -52,9 +85,8 @@ public class Board extends StackPane {
         }
 
         private void select() {
-            if (selectedTile != null) selectedTile.deselect();
             if(model.getPieceOnTile() != null) {
-                selectedTile = this;
+                tempSelectedTile = this;
                 setId("selected-tile");
 
                 List<data.Position.Tile> moveDest = position.model.getValidDestinations(model.getPieceOnTile());
@@ -64,15 +96,17 @@ public class Board extends StackPane {
                     if (tileModel.getPieceOnTile() != null)
                         tile.fgLayer.getStyleClass().add("capture");
                 }
+
+                moveToMake = new Move(model.getPieceOnTile(), moveHistory.getCurrentGame().getCurrentPosition());
             }
         }
         private void deselect() {
-            if(this == selectedTile && selectedTile.model.getPieceOnTile() != null) {
+            if(model.getPieceOnTile() != null) {
                 List<data.Position.Tile> moveDest = position.model.getValidDestinations(model.getPieceOnTile());
                 for (data.Position.Tile tile : moveDest)
                     fetchTile(tile).fgLayer.getStyleClass().clear();
 
-                selectedTile = null;
+                tempSelectedTile = null;
                 setId(null);
             }
         }
@@ -89,13 +123,12 @@ public class Board extends StackPane {
                     pieceView.setImage(pieceset[pieceOnTile.getColor().ordinal()][pieceOnTile.getId()]);
                 } catch (IOException e) { throw new RuntimeException("Exception occured while reading piece icons"); }
             }
-
-            bgLayer.getStyleClass().clear();
-            fgLayer.getStyleClass().clear();
         }
+
         private void update(data.Position.Tile model) {
             this.model = model;
             refresh();
+            fgLayer.getStyleClass().clear();
         }
     }
     private class Position extends GridPane {
@@ -115,32 +148,63 @@ public class Board extends StackPane {
         }
 
         private void activate() {
-            for (Node tile : getChildren()) tile.addEventHandler(MouseEvent.MOUSE_CLICKED, moveHandler);
+            for (Node node : getChildren()) {
+                Tile tile = (Tile) node;
+                tile.addEventHandler(MouseEvent.MOUSE_PRESSED, mousePressEvent -> {
+                    if(mousePressEvent.getButton() == MouseButton.SECONDARY) return;
+                    handleMove((Tile)mousePressEvent.getSource(), mousePressEvent);
+                    mousePressEvent.consume();
+                });
+                tile.addEventHandler(MouseEvent.MOUSE_DRAGGED, mouseDragEvent -> {
+                    if(!listenForEvents || dragData == null || mouseDragEvent.getButton() == MouseButton.SECONDARY)
+                        return;
+
+                    double offsetX = mouseDragEvent.getScreenX() - dragData.initialMouseX;
+                    double offsetY = mouseDragEvent.getScreenY() - dragData.initialMouseY;
+
+                    dragData.draggedPieceView.setTranslateX(dragData.initialTranslateX + offsetX);
+                    dragData.draggedPieceView.setTranslateY(dragData.initialTranslateY + offsetY);
+                    mouseDragEvent.consume();
+                });
+                tile.addEventHandler(MouseEvent.MOUSE_RELEASED, mouseReleaseEvent -> {
+                    if(mouseReleaseEvent.getButton() == MouseButton.SECONDARY) return;
+                    int tileX = (int) (mouseReleaseEvent.getX()/tile.getWidth()), tileY = (int) (mouseReleaseEvent.getY()/tile.getHeight());
+                    if(mouseReleaseEvent.getX() < 0) tileX--; if(mouseReleaseEvent.getY() < 0) tileY--;
+
+                    int destinationColumn = tile.model.getColumn() + tileX;
+                    int destinationRow = tile.model.getRow() - tileY;
+
+                    try{ handleMove(fetchTile(position.model.fetchTile(destinationColumn, destinationRow)), mouseReleaseEvent);}
+                    catch (IllegalArgumentException e) { Board.this.reload(); }
+
+                    mouseReleaseEvent.consume();
+                });
+            }
         }
         private void deactivate() {
-            for (Node tile : getChildren()) tile.removeEventHandler(MouseEvent.MOUSE_CLICKED, moveHandler);
+            for (Node tile : getChildren()) tile.removeEventHandler(MouseEvent.MOUSE_PRESSED, getOnMousePressed());
+            for (Node tile : getChildren()) tile.removeEventHandler(MouseEvent.MOUSE_DRAGGED, getOnMouseDragged());
+            for (Node tile : getChildren()) tile.removeEventHandler(MouseEvent.MOUSE_RELEASED, getOnMouseReleased());
         }
 
         private void refresh() {
-            ((List<Board.Tile>) (List<?>) getChildren()).forEach(Board.Tile::refresh);
+            for(Node node : getChildren()) ((Tile)node).refresh();
         }
-        private void update(data.Position model) {
-            this.model = model;
 
+        private void update(data.Position model) {
+            if(tempSelectedTile != null) tempSelectedTile.deselect();
+            fetchTile(this.model.locateKing(this.model.turn)).bgLayer.getStyleClass().clear();
+
+            this.model = model;
             Iterator<data.Position.Tile> tileIterator = model.getTilesOfBoard().listIterator();
-            for(Board.Tile tile : (List<Board.Tile>)(List<?>)getChildren()) tile.update(tileIterator.next());
+            for(Node node : getChildren()) ((Tile) node).update(tileIterator.next());
 
             if(model.isKingChecked(model.turn))
                 fetchTile(model.locateKing(model.turn)).bgLayer.getStyleClass().add("check");
-
-            if(selectedTile != null) {
-                selectedTile.setId(null);
-                selectedTile = null;
-            }
         }
     }
     private class PromotionOptions extends GridPane {
-        private Pane promotionVeil;
+        private final Pane promotionVeil;
         private PromotionOptions(Tile finalTile) {
             listenForEvents = false;
             promotionVeil = new Pane();
@@ -148,6 +212,7 @@ public class Board extends StackPane {
                 Board.this.getChildren().remove(PromotionOptions.this);
                 Board.this.getChildren().remove(promotionVeil);
                 listenForEvents = true;
+                refresh();
             });
             promotionVeil.getStyleClass().add("promotion-veil");
             Board.this.getChildren().add(promotionVeil);
@@ -173,50 +238,11 @@ public class Board extends StackPane {
         }
     }
 
-    private Position position;
     private final ImageView background;
+    private Position position;
 
     private MoveHistory moveHistory;
 
-    boolean listenForEvents = true;
-    private Tile selectedTile; Move moveToMake;
-    private final EventHandler<MouseEvent> moveHandler = mouseEvent -> {
-        if(listenForEvents) {
-            Tile clickedTile = (Tile) mouseEvent.getSource();
-            data.Position.Tile clickedTileModel = clickedTile.model;
-
-            Move temp;
-            Piece pieceToMove = clickedTileModel.getPieceOnTile();
-            data.Position currentPosition = moveHistory.getCurrentGame().getCurrentPosition();
-
-            if (moveToMake == null) {
-                if (pieceToMove != null) {
-                    temp = new Move(pieceToMove, currentPosition);
-                    if (temp.getMoveType() != Move.MoveType.INVALID) {
-                        moveToMake = temp;
-                        clickedTile.select();
-                    }
-                }
-                return;
-            }
-
-            moveToMake.setFinalTile(clickedTileModel);
-            if (moveToMake.getMoveType() == Move.MoveType.INVALID) {
-                if (!clickedTile.equals(selectedTile) && pieceToMove != null &&
-                        (temp = new Move(pieceToMove, currentPosition)).getMoveType() != Move.MoveType.INVALID) {
-                    moveToMake = temp;
-                    clickedTile.select();
-                } else {
-                    moveToMake = null;
-                    selectedTile.deselect();
-                }
-            } else {
-                if (moveToMake.getMoveType() == Move.MoveType.PROMOTION)
-                    getChildren().add(new PromotionOptions(clickedTile));
-                else update();
-            }
-        }
-    };
     private final EventHandler<KeyEvent> arrowKeyPress = keyEvent -> {
         if(listenForEvents) {
             switch (keyEvent.getCode()) {
@@ -237,7 +263,6 @@ public class Board extends StackPane {
             jumpToPosition(moveHistory.getCurrentGame().getCurrentPosition());
         }
     };
-
 
     public Board() {
         position = new Position(new data.Position());
@@ -260,47 +285,90 @@ public class Board extends StackPane {
     }
 
     public Tile fetchTile(data.Position.Tile tileModel) {
-        for(Tile tile : (List<Tile>)(List<?>)position.getChildren())
-            if(tile.model == tileModel) return tile;
-        throw new RuntimeException("Could not find your god damn tile.");
-    }
-    data.Position getCurrentPosition() {
-        return position.model;
+        for(Node node : position.getChildren())
+            if(((Tile)node).model == tileModel) return (Tile) node;
+        throw new RuntimeException("Could not find the requested tile.");
     }
 
-    public void refresh() {
-        pieceset = new Image[2][6];
-        background.setImage( new Image("boardthemes/" + Preferences.userRoot().get("Board Theme", "Green") + ".png",
-                560, 560, true, true));
-        position.refresh();
-    }
-    private void update() {
-        System.out.println(moveToMake.getFinalPosition().halfmoveClock + ", " + moveToMake.getFinalPosition().fullmoveNumber);
-        moveHistory.addMove(moveToMake);
-        position.update(moveToMake.getFinalPosition());
-
-        moveToMake = null;
-        if(position.model.getPiecesThatCanMove().isEmpty()) position.deactivate();
-    }
     public void jumpToPosition(data.Position positionModel) {
         position.update(positionModel);
     }
 
+    private void handleMove(Tile clickedTile, MouseEvent mouseEvent) {
+        if (!listenForEvents) return;
 
-    public void startGame(MoveHistory moveHistory) {
-        if(moveHistory != null) {
-            moveToMake = null; selectedTile = null;
-            getChildren().remove(0, getChildren().size());
-            position = new Position(new data.Position());
-            getChildren().addAll(background, position);
+        data.Position.Tile clickedTileModel = clickedTile.model;
+        if(mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED && clickedTileModel.getPieceOnTile() != null &&
+                new Move(clickedTileModel.getPieceOnTile(), position.model).getMoveType() != Move.MoveType.INVALID) {
+            dragData = new DragData(clickedTile, mouseEvent);
+            if(!clickedTile.equals(permSelectedTile)) permSelectedTile = null;
+        }
+        else if(moveToMake != null) {
+            moveToMake.setFinalTile(clickedTileModel);
+            if(moveToMake.getMoveType() == Move.MoveType.INVALID) {
+                if(permSelectedTile == null && dragData != null && dragData.dragSource.equals(clickedTile))
+                    permSelectedTile = clickedTile;
+                else {
+                    if(tempSelectedTile!=null) tempSelectedTile.deselect();
+                    if(permSelectedTile!=null) permSelectedTile.deselect();
+                    permSelectedTile = null;
+                }
+                refresh();
+            }
+            else {
+                if (moveToMake.getMoveType() == Move.MoveType.PROMOTION)
+                    getChildren().add(new PromotionOptions(clickedTile));
+                else update();
+            }
+        }
+    }
+
+    private void update() {
+        if(moveToMake == null)
+            throw new RuntimeException("Nothing to update here!");
+
+        if(dragData != null) {
+            getChildren().remove(dragData.draggedPieceView);
+            dragData = null;
         }
 
+        moveHistory.addMove(moveToMake);
+        position.update(moveToMake.getFinalPosition());
+        moveToMake = null;
+
+        if(position.model.getPiecesThatCanMove().isEmpty()) position.deactivate();
+    }
+    public void refresh() {
+        if(dragData != null) {
+            getChildren().remove(dragData.draggedPieceView);
+            dragData = null; tempSelectedTile = null;
+        }
+
+        position.refresh();
+    }
+    void reload() {
+        pieceset = new Image[2][6];
+        background.setImage(new Image("boardthemes/" + Preferences.userRoot().get("Board Theme", "Green") + ".png",
+                560, 560, true, true));
+        getChildren().remove(0, getChildren().size());
+        getChildren().addAll(background, position);
+        if(dragData != null) {
+            getChildren().remove(dragData.draggedPieceView);
+            dragData = null;
+        }
+        position.refresh();
+        if(tempSelectedTile!=null) tempSelectedTile.deselect();
+        if(permSelectedTile!=null) permSelectedTile.deselect();
+    }
+
+    public MoveHistory startGame() {
+        position = new Position(new data.Position());
         position.model.arrange();
+        reload();
 
-        moveHistory.linkToBoard();
-        refresh(); position.activate();
-
-        this.moveHistory = moveHistory;
+        position.activate();
         addEventHandler(KeyEvent.KEY_PRESSED, arrowKeyPress);
+
+        return moveHistory = new MoveHistory(this, position.model);
     }
 }

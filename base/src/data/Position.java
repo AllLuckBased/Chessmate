@@ -99,7 +99,7 @@ public class Position {
 
     public Tile fetchTile(int column, int row) {
         if(column<'a' || column>'a'+7 || row<1 || row>8)
-            throw new RuntimeException("Invalid tile: " + column + row);
+            throw new IllegalArgumentException("Invalid tile: " + (char)column + row);
         return tilesOfBoard.get(8*(row-1) + column-'a');
     }
     public Tile fetchTile(String tileName) {

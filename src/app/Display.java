@@ -1,7 +1,6 @@
 package app;
 
 import components.Board;
-import components.MoveHistory;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.BorderPane;
@@ -28,17 +27,15 @@ public class Display extends BorderPane {
     }
 
     void showAnalysisBoard() {
-        MoveHistory moveHistory = new MoveHistory(board);
-
         HBox center = new HBox();
         center.setSpacing(20);
         center.setAlignment(Pos.CENTER);
         HBox.setHgrow(board, Priority.ALWAYS);
         center.setPadding(new Insets(20));
-        center.getChildren().addAll(board, moveHistory);
+
+        center.getChildren().addAll(board, board.startGame());
         setCenter(center);
 
-        board.startGame(moveHistory);
         getStylesheets().add("/css/analysis-board.css");
     }
 }

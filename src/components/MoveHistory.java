@@ -2,6 +2,7 @@ package components;
 
 import data.Game;
 import data.Move;
+import data.Position;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
@@ -41,8 +42,9 @@ public class MoveHistory extends FlowPane {
 
     private MoveLabel selectedLabel;
 
-    public MoveHistory(Board board) {
+    public MoveHistory(Board board, Position initialPosition) {
         this.board = board;
+        currentGame = new Game(initialPosition);
 
         maxHeightProperty().bind(board.heightProperty());
         prefWidthProperty().bind(heightProperty().multiply(2).divide(3));
@@ -53,10 +55,6 @@ public class MoveHistory extends FlowPane {
 
     Game getCurrentGame() {
         return currentGame;
-    }
-
-    public void linkToBoard() {
-        currentGame = new Game(board.getCurrentPosition());
     }
 
     MoveLabel fetchLabel(Move move) {
