@@ -1,6 +1,6 @@
-<Display> Width: 904.7999877929688 Height: 553.5999755859375
-    <Toolbar> Width: 904.8 Height: 25.6
-        <HBox> Width: 888.8 Height: 25.6
+<Display> Width: 436.0 Height: 312.79998779296875
+    <Toolbar> Width: 436.0 Height: 25.6
+        <HBox> Width: 420.0 Height: 25.6
             <MenuBarButton> Width: 34.4 Height: 25.6
                 <MenuButtonSkinBase$MenuLabeledImpl> Width: 18.4 Height: 17.6
                     <LabeledText> Width: 17.947265625 Height: 17.0 </LabeledText>
@@ -21,461 +21,457 @@
             </MenuBarButton>
         </HBox>
     </Toolbar>
-    <HBox> Width: 904.8 Height: 528.0
-        <Board> Width: 488.0 Height: 488.0
-            <ImageView> Width: 488.0 Height: 488.0 </ImageView>
-            <Board$Position> Width: 493.6 Height: 493.6
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-                <Board$Tile> Width: 61.6 Height: 61.6
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                    <ImageView> Width: 61.0 Height: 61.0 </ImageView>
-                    <Pane> Width: 61.6 Height: 61.6
-                    </Pane>
-                </ImageView>
-            </Board$Position>
-        </ImageView>
-        <MoveHistory> Width: 325.6 Height: 488.0
-        </MoveHistory>
-    </HBox>
+    <Board> Width: 287.2 Height: 287.2
+        <ImageView> Width: 287.20001220703125 Height: 287.20001220703125 </ImageView>
+        <Board$Position> Width: 288.0 Height: 288.0
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+            <Board$Tile> Width: 36.0 Height: 36.0
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+                <ImageView> Width: 35.900001525878906 Height: 35.900001525878906 </ImageView>
+                <Pane> Width: 36.0 Height: 36.0
+                </Pane>
+            </ImageView>
+        </Board$Position>
+    </ImageView>
 </Display>

@@ -1,3 +1,4 @@
 rootProject.name = 'Chessmate'
 include 'base'
+include 'PvPSupport'
 
